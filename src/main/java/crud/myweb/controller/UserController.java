@@ -26,13 +26,15 @@ public class UserController {
         return "user/index";
     }
 
+
+
     @GetMapping("/new")
     public String newUser(ModelMap m) {
         m.addAttribute("user", new User());
         return "user/new";
     }
 
-    @PostMapping()
+    @PostMapping(value = "/")
     public String createUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "user/new";
